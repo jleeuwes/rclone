@@ -40,6 +40,7 @@ func NewFs(ctx context.Context, path string) (Fs, error) {
 		return nil, err
 	}
 	overridden := fsInfo.Options.Overridden(config)
+	/*
 	if len(overridden) > 0 {
 		extraConfig := overridden.String()
 		//Debugf(nil, "detected overridden config %q", extraConfig)
@@ -64,6 +65,7 @@ func NewFs(ctx context.Context, path string) (Fs, error) {
 		overriddenConfig[suffix] = extraConfig
 		overriddenConfigMu.Unlock()
 	}
+	*/
 	f, err := fsInfo.NewFs(ctx, configName, fsPath, config)
 	if f != nil && (err == nil || err == ErrorIsFile) {
 		addReverse(f, fsInfo)
